@@ -19,8 +19,8 @@ function Scanner(){
 }
 
 // Main scanner function
-Scanner.prototype.scan = function(){
-    console.log(keywords['BEGIN']);
+Scanner.prototype.scan = function(source){
+    console.log(source);
 }
 
 // Retrieves value from table

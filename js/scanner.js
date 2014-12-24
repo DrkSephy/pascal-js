@@ -28,6 +28,13 @@ Scanner.prototype.lookup = function(table, key){
     return table[key];
 }
 
+// Returns ascii value of character
+Scanner.prototype.toAscii = function(char){
+    return a.charCodeAt();
+}
+
+
+
 
 var keywords = {
     'BEGIN'     : 'TK_BEGIN',

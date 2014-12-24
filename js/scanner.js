@@ -43,12 +43,6 @@ Scanner.prototype.toUpper = function(char){
     return char.toUpperCase();
 }
 
-function myFunction(){
-    var program = document.getElementById("program").value;
-    document.getElementById("demo").innerHTML = program;
-    console.log(program); 
-}
-
 
 var keywords = {
     'BEGIN'     : 'TK_BEGIN',

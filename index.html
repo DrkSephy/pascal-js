@@ -5,9 +5,16 @@
     <body>
         <textarea id="program" rows="20" cols="60"></textarea>
         <script src="js/scanner.js"></script>
-        <script src="main.js"></script>
         <br>
         <button type="button" onClick="myFunction()"> Scan </button>
         <p id="demo" </p>
+        <script>
+            function myFunction(){
+                var program = document.getElementById("program").value;
+                document.getElementById("demo").innerHTML = program;
+                var scanner = new Scanner();
+                scanner.scan(program);
+            }
+        </script>
     </body>
 </html>

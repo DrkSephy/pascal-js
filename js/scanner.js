@@ -13,7 +13,7 @@ function Scanner(){
 }
 
 Scanner.prototype.scan = function(){
-    console.log("Main scanner function")
+    console.log(keywords['BEGIN'])
 }
 
 var keywords = {
@@ -79,7 +79,7 @@ var operators = {
     ']'         : 'TK_CLOSE_BRACKET'
 }
 
-SYSTEM = {
+var SYSTEM = {
     'WRITELN'   : 'TK_WRITELN',
     'ABS'       : 'TK_ABS'
 }

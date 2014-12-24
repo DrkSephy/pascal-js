@@ -38,6 +38,10 @@ Scanner.prototype.toLower = function(char){
     return char.toLowerCase();
 }
 
+// Returns uppercase string
+Scanner.prototype.toUpper = function(char){
+    return char.toUpperCase();
+}
 
 
 var keywords = {

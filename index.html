@@ -3,8 +3,20 @@
     <head>
     </head>
     <body>
-        <textarea rows="20" cols="60"></textarea>
+        <textarea id="program" rows="20" cols="60"></textarea>
+        <button type="button" onClick="myFunction()"> Scan </button>
         <script src="js/scanner.js"></script>
         <script src="main.js"></script>
+        <p id="demo" </p>
+        <script>
+        function myFunction() {
+            var x = document.getElementById("program").value;
+            document.getElementById("demo").innerHTML = x;
+            for(var i=0; i < x.length; i++){
+                console.log(x[i])
+            }
+        }
+        </script>
+
     </body>
 </html>

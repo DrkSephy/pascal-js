@@ -15,3 +15,71 @@ function Scanner(){
 Scanner.prototype.scan = function(){
     console.log("Main scanner function")
 }
+
+var keywords = {
+    'BEGIN'     : 'TK_BEGIN',
+    'BREAK'     : 'TK_BREAK',
+    'CONST'     : 'TK_CONST',
+    'DO'        : 'TK_DO',
+    'DOWNTO'    : 'TK_DOWNTO',
+    'ELSE'      : 'TK_ELSE',
+    'END'       : 'TK_END',
+    'END.'      : 'TK_END_CODE',
+    'FOR'       : 'TK_FOR',
+    'FUNCTION'  : 'TK_FUNCTION',
+    'IDENTIFIER': 'TK_IDENTIFIER',
+    'IF'        : 'TK_IF',
+    'LABEL'     : 'TK_LABEL', 
+    'PROGRAM'   : 'TK_PROGRAM',
+    'REPEAT'    : 'TK_REPEAT',
+    'STRING'    : 'TK_STRING', 
+    'THEN'      : 'TK_THEN',
+    'TO'        : 'TK_TO',
+    'TYPE'      : 'TK_TYPE',
+    'VAR'       : 'TK_VAR',
+    'UNTIL'     : 'TK_UNTIL', 
+    'WHILE'     : 'TK_WHILE',
+    'INTEGER'   : 'TK_ID_INTEGER', 
+    'REAL'      : 'TK_ID_REAL',
+    'CHAR'      : 'TK_ID_CHAR',
+    'BOOLEAN'   : 'TK_ID_BOOLEAN',
+    'OF'        : 'TK_OF'
+}
+
+var operators = {
+    '+'         : 'TK_PLUS',
+    '-'         : 'TK_MINUS',
+    '*'         : 'TK_MULT',
+    '/'         : 'TK_DIV_FLOAT',
+    'DIV'       : 'TK_DIV',
+    'MOD'       : 'TK_MOD',
+    ':'         : 'TK_COLON',
+    '='         : 'TK_EQUALS',
+    ':='        : 'TK_ASSIGNMENT',
+    '>'         : 'TK_GREATER',
+    '<'         : 'TK_LESS',
+    '>='        : 'TK_GREATER_EQUALS',
+    '<='        : 'TK_LESS_EQUALS',
+    '!'         : 'TK_EXCLAMATION',
+    '!='        : 'TK_NOT_EQUALS',
+    'AND'       : 'TK_AND',
+    'XOR'       : 'TK_XOR',
+    'OR'        : 'TK_OR',
+    'NOT'       : 'TK_NOT',
+    ';'         : 'TK_SEMICOLON',
+    '('         : 'TK_OPEN_PARENTHESIS',
+    ')'         : 'TK_CLOSE_PARENTHESIS',
+    '\''        : 'TK_QUOTE',
+    '(*'        : 'TK_BEGIN_COMMENT',
+    '*)'        : 'TK_END_COMMENT',
+    ','         : 'TK_COMMA',
+    '~'         : 'TK_RANGE',
+    'ARRAY'     : 'TK_ARRAY',
+    '['         : 'TK_OPEN_BRACKET',
+    ']'         : 'TK_CLOSE_BRACKET'
+}
+
+SYSTEM = {
+    'WRITELN'   : 'TK_WRITELN',
+    'ABS'       : 'TK_ABS'
+}

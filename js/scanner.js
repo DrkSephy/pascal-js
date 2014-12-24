@@ -33,6 +33,10 @@ Scanner.prototype.toAscii = function(char){
     return a.charCodeAt();
 }
 
+// Returns lowercase string
+Scanner.prototype.toLower = function(char){
+    return char.toLowerCase();
+}
 
 
 

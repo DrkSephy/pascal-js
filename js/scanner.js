@@ -1,3 +1,9 @@
+/************************************
+* scanner.js
+* MIT License (c) 2014 David Leonard
+* drksephy.github.io
+*************************************/
+
 'use strict';   
 
 /**********************
@@ -12,9 +18,16 @@ function Scanner(){
 
 }
 
+// Main scanner function
 Scanner.prototype.scan = function(){
-    console.log(keywords['BEGIN'])
+    console.log(keywords['BEGIN']);
 }
+
+// Retrieves value from table
+Scanner.prototype.lookup = function(table, key){
+    return table[key];
+}
+
 
 var keywords = {
     'BEGIN'     : 'TK_BEGIN',

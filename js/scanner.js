@@ -20,8 +20,12 @@ function Scanner(){
 
 // Main scanner function
 Scanner.prototype.scan = function(source){
-    console.log(source);
+    for(var i = 0; i < source.length; i++){
+        console.log(Scanner.prototype.toAscii(source[i]) + " " + source[i]);
+    }
 }
+
+
 
 // Retrieves value from table
 Scanner.prototype.lookup = function(table, key){
@@ -30,7 +34,7 @@ Scanner.prototype.lookup = function(table, key){
 
 // Returns ascii value of character
 Scanner.prototype.toAscii = function(char){
-    return a.charCodeAt();
+    return char.charCodeAt();
 }
 
 // Returns lowercase string

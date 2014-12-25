@@ -21,7 +21,11 @@ function Scanner(){
 // Main scanner function
 Scanner.prototype.scan = function(source){
     for(var i = 0; i < source.length; i++){
-        console.log(Scanner.prototype.toAscii(source[i]) + " " + source[i]);
+        this.curr_token += source[i];
+        if (Scanner.prototype.lookup(keywords, Scanner.prototype.toUpper(this.curr_token))){
+            console.log(Scanner.prototype.lookup(keywords, Scanner.prototype.toUpper(this.curr_token)));
+        }
+        // console.log(Scanner.prototype.toAscii(source[i]) + " " + source[i]);
     }
 }
 

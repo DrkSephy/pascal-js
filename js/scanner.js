@@ -23,14 +23,27 @@ Scanner.prototype.scan = function(source){
     for(var i = 0; i < source.length; i++){
         this.curr_token += source[i];
         if (Scanner.prototype.lookup(keywords, Scanner.prototype.toUpper(this.curr_token))){
-            console.log(Scanner.prototype.lookup(keywords, Scanner.prototype.toUpper(this.curr_token)));
+            Scanner.prototype.generateToken(Scanner.prototype.lookup(keywords, Scanner.prototype.toUpper(this.curr_token)));
         }
+        this.curr_col += 1;
+        console.log(this);
         // console.log(Scanner.prototype.toAscii(source[i]) + " " + source[i]);
     }
 }
 
 
+Scanner.prototype.generateToken = function(tokenName){
 
+    var token = {
+        'token': tokenName,
+        'value': self.curr_token,
+        'row'  : self.curr_row,
+        'col'  : self.curr_col
+    }
+    console.log(this);
+    //console.log(this.curr_token);
+    return; 
+}
 // Retrieves value from table
 Scanner.prototype.lookup = function(table, key){
     return table[key];

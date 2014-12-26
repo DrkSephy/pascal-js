@@ -18,6 +18,7 @@ function Scanner(){
 
 }
 
+/*
 // Main scanner function
 Scanner.prototype.scan = function(source){
     for(var i = 0; i < source.length; i++){
@@ -30,6 +31,7 @@ Scanner.prototype.scan = function(source){
         // console.log(Scanner.prototype.toAscii(source[i]) + " " + source[i]);
     }
 }
+*/
 
 
 Scanner.prototype.generateToken = function(tokenName){

@@ -22,10 +22,11 @@ Scanner.prototype.generateToken = function(tokenName){
 
     var token = {
         'token': tokenName,
-        'value': self.curr_token,
-        'row'  : self.curr_row,
-        'col'  : self.curr_col
+        'value': this.curr_token,
+        'row'  : this.curr_row,
+        'col'  : this.curr_col
     }
+    
     return; 
 }
 

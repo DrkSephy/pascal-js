@@ -28,6 +28,7 @@ Scanner.prototype.generateToken = function(tokenName){
         'col'  : this.curr_col
     }
 
+    this.tokens.push(token);
     return; 
 }
 
@@ -58,19 +59,25 @@ Scanner.prototype.toUpper = function(char){
 
 // Main scanner function
 function scan(){
+    // Get input text from textarea
     var program = document.getElementById("program").value;
-    document.getElementById("demo").innerHTML = program;
-    console.log(program); 
+    document.getElementById("demo").innerHTML = program; 
+    // Initalize scanner
     var scanner = new Scanner();
-    scanner.printer();
+
+    // Begin scanning input text
     for(var i = 0; i < program.length; i++){
+        // Build up current token value
         scanner.curr_val += program[i]
+        // Check if current token value is a keyword...
         if(scanner.toUpper(scanner.curr_val) in keywords){
+            scanner.generateToken(scanner.lookup(keywords, scanner.toUpper(scanner.curr_val)));
             console.log(scanner.lookup(keywords, scanner.toUpper(scanner.curr_val)));
         }
         // console.log(scanner.toAscii(program[i]));
         console.log(scanner.curr_val);
     }
+    console.log(scanner.tokens);
 
 }
 

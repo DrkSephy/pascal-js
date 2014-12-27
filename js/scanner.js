@@ -67,15 +67,22 @@ function scan(){
 
     // Begin scanning input text
     for(var i = 0; i < program.length; i++){
+        scanner.curr_col += 1;
         // Build up current token value
         scanner.curr_val += program[i]
         // Check if current token value is a keyword...
         if(scanner.toUpper(scanner.curr_val) in keywords){
             scanner.generateToken(scanner.lookup(keywords, scanner.toUpper(scanner.curr_val)));
-            console.log(scanner.lookup(keywords, scanner.toUpper(scanner.curr_val)));
+            scanner.curr_val = '';
         }
+        if(scanner.toAscii(program[i]) == '10'){
+            console.log("Hello");
+            scanner.curr_row += 1; 
+        }
+        console.log(scanner.curr_row); 
         // console.log(scanner.toAscii(program[i]));
-        console.log(scanner.curr_val);
+        // console.log(scanner.curr_val);
+
     }
     console.log(scanner.tokens);
 

@@ -18,14 +18,6 @@ function Scanner(){
 
 }
 
-
-// Main scanner function
-function myFunction(){
-    var program = document.getElementById("program").value;
-    document.getElementById("demo").innerHTML = program;
-    console.log(program); 
-}
-
 Scanner.prototype.generateToken = function(tokenName){
 
     var token = {
@@ -34,10 +26,14 @@ Scanner.prototype.generateToken = function(tokenName){
         'row'  : self.curr_row,
         'col'  : self.curr_col
     }
-    console.log(this);
-    //console.log(this.curr_token);
     return; 
 }
+
+// Default printer method
+Scanner.prototype.printer = function(){
+    console.log("Printer method");
+}
+
 // Retrieves value from table
 Scanner.prototype.lookup = function(table, key){
     return table[key];
@@ -58,6 +54,14 @@ Scanner.prototype.toUpper = function(char){
     return char.toUpperCase();
 }
 
+// Main scanner function
+function scan(){
+    var program = document.getElementById("program").value;
+    document.getElementById("demo").innerHTML = program;
+    console.log(program); 
+    var scanner = new Scanner();
+
+}
 
 var keywords = {
     'BEGIN'     : 'TK_BEGIN',

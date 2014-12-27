@@ -72,18 +72,18 @@ function scan(){
         if(scanner.toAscii(program[i]) != '32' && scanner.toAscii(program[i]) != '10'){
             // Build up current token value
             scanner.curr_val += program[i]
-            console.log(scanner.curr_val);
-            // Check if current token value is a keyword...
-            if(scanner.toUpper(scanner.curr_val) in keywords){
-                scanner.generateToken(scanner.lookup(keywords, scanner.toUpper(scanner.curr_val)));
-                scanner.curr_val = '';
-            }
-            if(scanner.toAscii(program[i]) == '10'){
-                scanner.curr_row += 1; 
-            }
-            console.log(scanner.toAscii(program[i]));
-            // console.log(scanner.curr_val);
         }
+        console.log(scanner.curr_val);
+        // Check if current token value is a keyword...
+        if(scanner.toUpper(scanner.curr_val) in keywords){
+            scanner.generateToken(scanner.lookup(keywords, scanner.toUpper(scanner.curr_val)));
+            scanner.curr_val = '';
+        }
+        if(scanner.toAscii(program[i]) == '10'){
+            scanner.curr_row += 1; 
+        }
+        console.log(scanner.toAscii(program[i]));
+        // console.log(scanner.curr_val);
 
     }
     console.log(scanner.tokens);

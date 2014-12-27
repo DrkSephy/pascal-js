@@ -23,12 +23,22 @@ Scanner.prototype.generateToken = function(tokenName){
 
     var token = {
         'token': tokenName,
-        'value': this.curr_token,
+        'value': this.curr_val,
         'row'  : this.curr_row,
         'col'  : this.curr_col
     }
 
     this.tokens.push(token);
+
+    document.getElementById('tokens').innerHTML += token.token;
+    document.getElementById('tokens').innerHTML += "<br>";
+    document.getElementById('tokens').innerHTML += token.value;
+    document.getElementById('tokens').innerHTML += "<br>";
+    document.getElementById('tokens').innerHTML += token.row;
+    document.getElementById('tokens').innerHTML += "<br>";
+    document.getElementById('tokens').innerHTML += token.col;
+    document.getElementById('tokens').innerHTML += "<br>";
+
     return; 
 }
 

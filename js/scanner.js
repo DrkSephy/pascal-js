@@ -68,8 +68,9 @@ function scan(){
     // Begin scanning input text
     for(var i = 0; i < program.length; i++){
         scanner.curr_col += 1;
-        // Build up current token value
-        if(scanner.toAscii(program[i]) !== '32'){
+        // Check if character is newline or space
+        if(scanner.toAscii(program[i]) != '32' && scanner.toAscii(program[i]) != '10'){
+            // Build up current token value
             scanner.curr_val += program[i]
             console.log(scanner.curr_val);
             // Check if current token value is a keyword...

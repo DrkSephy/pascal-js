@@ -30,14 +30,13 @@ Scanner.prototype.generateToken = function(tokenName){
 
     this.tokens.push(token);
 
-    document.getElementById('tokens').innerHTML += token.token;
-    document.getElementById('tokens').innerHTML += "<br>";
-    document.getElementById('tokens').innerHTML += token.value;
-    document.getElementById('tokens').innerHTML += "<br>";
-    document.getElementById('tokens').innerHTML += token.row;
-    document.getElementById('tokens').innerHTML += "<br>";
-    document.getElementById('tokens').innerHTML += token.col;
-    document.getElementById('tokens').innerHTML += "<br>";
+    document.getElementById('tokens').innerHTML += "<tr>";
+    document.getElementById('tokens').innerHTML += "<td>" + token.value + "</td>";
+    document.getElementById('tokens').innerHTML += "<td>" + token.value + "</td>";
+    document.getElementById('tokens').innerHTML += "<td>" + token.row + "</td>";
+    document.getElementById('tokens').innerHTML += "<td>" + token.col + "</td>"
+    document.getElementById('tokens').innerHTML += "</tr>";
+
 
     return; 
 }

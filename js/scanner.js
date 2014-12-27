@@ -26,7 +26,7 @@ Scanner.prototype.generateToken = function(tokenName){
         'row'  : this.curr_row,
         'col'  : this.curr_col
     }
-    
+
     return; 
 }
 
@@ -61,6 +61,10 @@ function scan(){
     document.getElementById("demo").innerHTML = program;
     console.log(program); 
     var scanner = new Scanner();
+    scanner.printer();
+    for(var i = 0; i < program.length; i++){
+        console.log(scanner.toAscii(program[i]));
+    }
 
 }
 

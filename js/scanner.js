@@ -64,7 +64,12 @@ function scan(){
     var scanner = new Scanner();
     scanner.printer();
     for(var i = 0; i < program.length; i++){
-        console.log(scanner.toAscii(program[i]));
+        scanner.curr_val += program[i]
+        if(scanner.toUpper(scanner.curr_val) in keywords){
+            console.log(scanner.lookup(keywords, scanner.toUpper(scanner.curr_val)));
+        }
+        // console.log(scanner.toAscii(program[i]));
+        console.log(scanner.curr_val);
     }
 
 }

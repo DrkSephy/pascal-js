@@ -18,21 +18,13 @@ function Scanner(){
 
 }
 
-/*
-// Main scanner function
-Scanner.prototype.scan = function(source){
-    for(var i = 0; i < source.length; i++){
-        this.curr_token += source[i];
-        if (Scanner.prototype.lookup(keywords, Scanner.prototype.toUpper(this.curr_token))){
-            Scanner.prototype.generateToken(Scanner.prototype.lookup(keywords, Scanner.prototype.toUpper(this.curr_token)));
-        }
-        this.curr_col += 1;
-        console.log(this);
-        // console.log(Scanner.prototype.toAscii(source[i]) + " " + source[i]);
-    }
-}
-*/
 
+// Main scanner function
+function myFunction(){
+    var program = document.getElementById("program").value;
+    document.getElementById("demo").innerHTML = program;
+    console.log(program); 
+}
 
 Scanner.prototype.generateToken = function(tokenName){
 

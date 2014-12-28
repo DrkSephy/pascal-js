@@ -73,6 +73,12 @@ Scanner.prototype.setSpace = function(char){
     return; 
 }
 
+// Handles comments 
+Scanner.prototype.setComment = function(char){
+    // TODO
+    return;
+}
+
 // Main scanner function
 function scan(){
     // Get input text from textarea

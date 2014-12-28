@@ -79,6 +79,18 @@ Scanner.prototype.setComment = function(char){
     return;
 }
 
+// Handles numerical characters
+Scanner.prototype.setDigit = function(char){
+    // TODO
+    return;
+}
+
+// Handles newline characters
+Scanner.prototype.setLine = function(char){
+    // TODO
+    return; 
+}
+
 // Main scanner function
 function scan(){
     // Get input text from textarea

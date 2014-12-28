@@ -29,13 +29,14 @@ Scanner.prototype.generateToken = function(tokenName){
     }
 
     this.tokens.push(token);
-
+    /*
     document.getElementById('tokens').innerHTML += "<tr>";
     document.getElementById('tokens').innerHTML += "<td>" + token.value + "</td>";
     document.getElementById('tokens').innerHTML += "<td>" + token.value + "</td>";
     document.getElementById('tokens').innerHTML += "<td>" + token.row + "</td>";
-    document.getElementById('tokens').innerHTML += "<td>" + token.col + "</td>"
+    document.getElementById('tokens').innerHTML += "<td>" + token.col + "</td>";
     document.getElementById('tokens').innerHTML += "</tr>";
+    */
 
 
     return; 
@@ -66,6 +67,12 @@ Scanner.prototype.toUpper = function(char){
     return char.toUpperCase();
 }
 
+// Handles whitespace character
+Scanner.prototype.setSpace = function(char){
+    // TODO
+    return; 
+}
+
 // Main scanner function
 function scan(){
     // Get input text from textarea
@@ -85,6 +92,7 @@ function scan(){
         console.log(scanner.curr_val);
         // Check if current token value is a keyword...
         if(scanner.toUpper(scanner.curr_val) in keywords){
+            console.log("Hello")
             scanner.generateToken(scanner.lookup(keywords, scanner.toUpper(scanner.curr_val)));
             scanner.curr_val = '';
         }

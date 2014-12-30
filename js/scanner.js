@@ -21,20 +21,14 @@ function Scanner(){
 
 // Adds token to list
 Scanner.prototype.addToken = function(){
-
-    if(this.curr_token){
-        console.log(this.curr_token);
-        console.log(this.curr_val);
-        console.log(this.curr_row);
-        console.log(this.curr_col);
-        var token = {
-            'token': this.curr_token,
-            'value': this.curr_val,
-            'row'  : this.curr_row,
-            'col'  : this.curr_col
-        };
-        this.tokens.push(token);
+    // console.log(this);
+    var token = {
+        'value': this.curr_val,
+        'row'  : this.curr_row,
+        'col'  : this.curr_col
     }
+
+    this.tokens.push(token);
 
     /*
     document.getElementById('tokens').innerHTML += "<tr>";
@@ -60,11 +54,6 @@ Scanner.prototype.reset = function(){
 Scanner.prototype.printer = function(){
     console.log("Printer method");
     return; 
-}
-
-// Retrieves value from table
-Scanner.prototype.lookup = function(table, key){
-    return table[key];
 }
 
 // Returns ascii value of character
@@ -113,8 +102,12 @@ Scanner.prototype.setLine = function(ascii_value){
     return; 
 }
 
+function setToken(token_type, character){
+
+}
 // Adds the last token into the list, sets new token
 Scanner.prototype.setToken = function(token_type, character){
+    console.log(this.val);
     Scanner.prototype.addToken();
     Scanner.prototype.reset();
     this.curr_token = token_type;
@@ -146,14 +139,11 @@ function scan(){
     document.getElementById("demo").innerHTML = program; 
     // Initalize scanner
     var scanner = new Scanner();
-
+    scanner.reset();
     // Begin scanning input text
     for(var i = 0; i < program.length; i++){
-        console.log(program[i]);
         var character = scanner.toUpper(program[i]);
         var ascii = scanner.toAscii(character);
-        console.log(ascii);
-        console.log(scanner.curr_val);
         // Handle case for newline character
         if(ascii == '10'){
             scanner.setLine(ascii);
@@ -164,11 +154,8 @@ function scan(){
         }
         // Handle case for valid letters
         else if( (ascii >= 97 && ascii <= 122) || (ascii >= 65 && ascii <= 90) ){
-            console.log("HELLO");
             scanner.setCharacter(character);
         }
-
-        scanner.curr_col += 1; 
 
     }
     console.log(scanner.tokens);

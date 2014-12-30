@@ -114,6 +114,7 @@ Scanner.prototype.setToken = function(token_type, character){
     this.curr_val += character; 
     return; 
 }
+
 // Handles characters
 Scanner.prototype.setCharacter = function(character){
     if(this.curr_token != 'TK_IDENTIFIER'){
@@ -128,7 +129,7 @@ Scanner.prototype.setCharacter = function(character){
             this.curr_token = operators[this.curr_val];
         }
     }
-
+    return; 
 }
 
 // Main scanner function

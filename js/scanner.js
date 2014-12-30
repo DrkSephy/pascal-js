@@ -21,14 +21,16 @@ function Scanner(){
 
 Scanner.prototype.generateToken = function(tokenName){
 
-    var token = {
-        'token': tokenName,
-        'value': this.curr_val,
-        'row'  : this.curr_row,
-        'col'  : this.curr_col
+    if(this.curr_token){
+        var token = {
+            'token': tokenName,
+            'value': this.curr_val,
+            'row'  : this.curr_row,
+            'col'  : this.curr_col
+        }
+        this.tokens.push(token);
     }
 
-    this.tokens.push(token);
     /*
     document.getElementById('tokens').innerHTML += "<tr>";
     document.getElementById('tokens').innerHTML += "<td>" + token.value + "</td>";
@@ -108,6 +110,14 @@ function scan(){
 
     // Begin scanning input text
     for(var i = 0; i < program.length; i++){
+        character = scanner.toUpper(program[i]);
+        ascii = scanner.toAscii(program[i]);
+
+        if(ascii == '10'){
+            // Handle case for newline character
+            Scanner.setLine(ascii);
+        }
+        /*
         scanner.curr_col += 1;
         // Check if character is newline or space
         if(scanner.toAscii(program[i]) != '32' && scanner.toAscii(program[i]) != '10'){
@@ -126,6 +136,7 @@ function scan(){
         }
         console.log(scanner.toAscii(program[i]));
         // console.log(scanner.curr_val);
+        */
 
     }
     console.log(scanner.tokens);

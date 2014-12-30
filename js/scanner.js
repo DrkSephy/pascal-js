@@ -22,23 +22,15 @@ function Scanner(){
 // Adds token to list
 Scanner.prototype.addToken = function(){
     // console.log(this);
-    var token = {
-        'value': this.curr_val,
-        'row'  : this.curr_row,
-        'col'  : this.curr_col
+    if(this.curr_token){
+        var token = {
+            'token': this.curr_token,
+            'value': this.curr_val,
+            'row'  : this.curr_row,
+            'col'  : this.curr_col
+        }
+        this.tokens.push(token);
     }
-
-    this.tokens.push(token);
-
-    /*
-    document.getElementById('tokens').innerHTML += "<tr>";
-    document.getElementById('tokens').innerHTML += "<td>" + token.value + "</td>";
-    document.getElementById('tokens').innerHTML += "<td>" + token.value + "</td>";
-    document.getElementById('tokens').innerHTML += "<td>" + token.row + "</td>";
-    document.getElementById('tokens').innerHTML += "<td>" + token.col + "</td>";
-    document.getElementById('tokens').innerHTML += "</tr>";
-    */
-
 
     return; 
 }
@@ -52,7 +44,6 @@ Scanner.prototype.reset = function(){
 
 // Default printer method
 Scanner.prototype.printer = function(){
-    console.log("Printer method");
     return; 
 }
 
@@ -73,7 +64,6 @@ Scanner.prototype.toUpper = function(char){
 
 // Handles whitespace character
 Scanner.prototype.setSpace = function(ascii_value){
-    console.log("SETSPACE");
     this.addToken();
     this.reset();
     return; 
@@ -107,7 +97,6 @@ function setToken(token_type, character){
 }
 // Adds the last token into the list, sets new token
 Scanner.prototype.setToken = function(token_type, character){
-    console.log(this);
     this.addToken();
     this.reset();
     this.curr_token = token_type;
@@ -139,7 +128,6 @@ function scan(){
     document.getElementById("demo").innerHTML = program; 
     // Initalize scanner
     var scanner = new Scanner();
-    scanner.reset();
     // Begin scanning input text
     for(var i = 0; i < program.length; i++){
         var character = scanner.toUpper(program[i]);
@@ -156,6 +144,7 @@ function scan(){
         else if( (ascii >= 97 && ascii <= 122) || (ascii >= 65 && ascii <= 90) ){
             scanner.setCharacter(character);
         }
+        scanner.curr_col += 1;
 
     }
     console.log(scanner.tokens);

@@ -11,11 +11,12 @@
 **********************/
 
 function Scanner(){
-    this.tokens     = []
-    this.curr_row   = 1
-    this.curr_col   = 1 
-    this.curr_token = ''
+    this.tokens     = [];
+    this.curr_row   = 1 ;
+    this.curr_col   = 1 ;
+    this.curr_token = '';
     this.curr_val   = ''; 
+    this.comments   = false; 
 
 }
 

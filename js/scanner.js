@@ -74,8 +74,8 @@ Scanner.prototype.toUpper = function(char){
 // Handles whitespace character
 Scanner.prototype.setSpace = function(ascii_value){
     console.log("SETSPACE");
-    Scanner.prototype.addToken();
-    Scanner.prototype.reset();
+    this.addToken();
+    this.reset();
     return; 
 }
 
@@ -93,8 +93,8 @@ Scanner.prototype.setDigit = function(char){
 
 // Handles newline characters
 Scanner.prototype.setLine = function(ascii_value){
-    Scanner.prototype.addToken();
-    Scanner.prototype.reset();
+    this.addToken();
+    this.reset();
     if(ascii_value == '10' || ascii_value == '13'){
         self.curr_row += 1;
         self.curr_col = 0;
@@ -107,9 +107,9 @@ function setToken(token_type, character){
 }
 // Adds the last token into the list, sets new token
 Scanner.prototype.setToken = function(token_type, character){
-    console.log(this.val);
-    Scanner.prototype.addToken();
-    Scanner.prototype.reset();
+    console.log(this);
+    this.addToken();
+    this.reset();
     this.curr_token = token_type;
     this.curr_val += character; 
     return; 
@@ -118,7 +118,7 @@ Scanner.prototype.setToken = function(token_type, character){
 // Handles characters
 Scanner.prototype.setCharacter = function(character){
     if(this.curr_token != 'TK_IDENTIFIER'){
-        Scanner.prototype.setToken('TK_IDENTIFIER', character);
+        this.setToken('TK_IDENTIFIER', character);
     }
     else{
         this.curr_val += character;

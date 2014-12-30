@@ -19,11 +19,10 @@ function Scanner(){
 
 }
 
-Scanner.prototype.generateToken = function(tokenName){
+Scanner.prototype.generateToken = function(){
 
     if(this.curr_token){
         var token = {
-            'token': tokenName,
             'value': this.curr_val,
             'row'  : this.curr_row,
             'col'  : this.curr_col
@@ -96,7 +95,7 @@ Scanner.prototype.setDigit = function(char){
 
 // Handles newline characters
 Scanner.prototype.setLine = function(char){
-    // TODO
+    Scanner.prototype.generateToken
     return; 
 }
 

@@ -122,7 +122,16 @@ Scanner.prototype.setCharacter = function(character){
 
 // Handles operators
 Scanner.prototype.setOperator = function(character){
-    // TODO
+    if(this.curr_val + character in operators){
+        this.curr_val += character;
+        // Handle all two-symbol operators
+        if(this.curr_val in operators){
+            this.curr_token = operators[this.curr_val];
+        }
+    }
+    else{
+        this.setToken(operators[character], character);
+    }
     return;
 }
 

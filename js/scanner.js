@@ -19,6 +19,7 @@ function Scanner(){
 
 }
 
+// Adds token to list
 Scanner.prototype.generateToken = function(){
 
     if(this.curr_token){
@@ -76,7 +77,7 @@ Scanner.prototype.toUpper = function(char){
 }
 
 // Handles whitespace character
-Scanner.prototype.setSpace = function(char){
+Scanner.prototype.setSpace = function(ascii_value){
     Scanner.prototype.generateToken();
     Scanner.prototype.reset();
     return; 
@@ -121,6 +122,9 @@ function scan(){
         if(ascii == '10'){
             // Handle case for newline character
             Scanner.setLine(ascii);
+        }
+        else if(ascii == '32'){
+            Scanner.setSpace(ascii);
         }
         /*
         scanner.curr_col += 1;

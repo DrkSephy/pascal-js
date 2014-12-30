@@ -4,7 +4,7 @@
 * drksephy.github.io
 *************************************/
 
-'use strict';   
+//'use strict';   
 
 /**********************
 * Scanner constructor *
@@ -23,12 +23,16 @@ function Scanner(){
 Scanner.prototype.addToken = function(){
 
     if(this.curr_token){
+        console.log(this.curr_token);
+        console.log(this.curr_val);
+        console.log(this.curr_row);
+        console.log(this.curr_col);
         var token = {
             'token': this.curr_token,
             'value': this.curr_val,
             'row'  : this.curr_row,
             'col'  : this.curr_col
-        }
+        };
         this.tokens.push(token);
     }
 
@@ -80,6 +84,7 @@ Scanner.prototype.toUpper = function(char){
 
 // Handles whitespace character
 Scanner.prototype.setSpace = function(ascii_value){
+    console.log("SETSPACE");
     Scanner.prototype.addToken();
     Scanner.prototype.reset();
     return; 
@@ -144,8 +149,11 @@ function scan(){
 
     // Begin scanning input text
     for(var i = 0; i < program.length; i++){
+        console.log(program[i]);
         var character = scanner.toUpper(program[i]);
-        var ascii = scanner.toAscii(program[i]);
+        var ascii = scanner.toAscii(character);
+        console.log(ascii);
+        console.log(scanner.curr_val);
         // Handle case for newline character
         if(ascii == '10'){
             scanner.setLine(ascii);
@@ -155,7 +163,8 @@ function scan(){
             scanner.setSpace(ascii);
         }
         // Handle case for valid letters
-        else if(ascii >= 97 && ascii <= 122){
+        else if( (ascii >= 97 && ascii <= 122) || (ascii >= 65 && ascii <= 90) ){
+            console.log("HELLO");
             scanner.setCharacter(character);
         }
 

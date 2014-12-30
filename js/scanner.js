@@ -32,6 +32,13 @@ Scanner.prototype.addToken = function(){
         this.tokens.push(token);
     }
 
+    var table = document.getElementById('list');
+    var node = document.createElement('tr'); 
+    table.appendChild(node);
+    var entry = node.appendChild(document.createElement('td'));
+    entry.appendChild(document.createTextNode(token['token']));
+
+
     return; 
 }
 

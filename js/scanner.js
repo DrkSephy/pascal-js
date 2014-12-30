@@ -74,6 +74,12 @@ Scanner.prototype.setComment = function(character){
     return;
 }
 
+// Handles EOF
+Scanner.prototype.setEOF = function(character){
+    // TODO
+    return;
+}
+
 // Handles numerical characters
 Scanner.prototype.setDigit = function(character){
     // TODO

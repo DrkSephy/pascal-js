@@ -20,7 +20,7 @@ function Scanner(){
 }
 
 // Adds token to list
-Scanner.prototype.generateToken = function(){
+Scanner.prototype.addToken = function(){
 
     if(this.curr_token){
         var token = {
@@ -106,6 +106,13 @@ Scanner.prototype.setLine = function(ascii_value){
     return; 
 }
 
+// Handles characters
+Scanner.prototype.setCharacter = function(character){
+    if(this.curr_token != 'TK_IDENTIFIER'){
+        Scanner.prototype.setToken('TK_IDENTIFIER')
+    }
+}
+
 // Main scanner function
 function scan(){
     // Get input text from textarea
@@ -118,13 +125,17 @@ function scan(){
     for(var i = 0; i < program.length; i++){
         character = scanner.toUpper(program[i]);
         ascii = scanner.toAscii(program[i]);
-
+        // Handle case for newline character
         if(ascii == '10'){
-            // Handle case for newline character
             Scanner.setLine(ascii);
         }
+        // Handle case for space
         else if(ascii == '32'){
             Scanner.setSpace(ascii);
+        }
+        // Handle case for valid letters
+        else if(ascii >= 97 && ascii <= 122){
+            Scanner.setCharacter(character);
         }
         /*
         scanner.curr_col += 1;

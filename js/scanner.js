@@ -4,7 +4,7 @@
 * drksephy.github.io
 *************************************/
 
-//'use strict';   
+'use strict';   
 
 /**********************
 * Scanner constructor *
@@ -21,7 +21,7 @@ function Scanner(){
 
 // Adds token to list
 Scanner.prototype.addToken = function(){
-    // console.log(this);
+
     if(this.curr_token){
         var token = {
             'token': this.curr_token,
@@ -31,6 +31,7 @@ Scanner.prototype.addToken = function(){
         }
         this.tokens.push(token);
 
+        // TODO: Use bootstrap to render these tables
         var table = document.getElementById('list');
         var node = document.createElement('tr');
         for(var prop in token){
@@ -39,8 +40,6 @@ Scanner.prototype.addToken = function(){
             entry.appendChild(document.createTextNode(token[prop]));
         }
     }
-
-
 
     return; 
 }
@@ -52,10 +51,6 @@ Scanner.prototype.reset = function(){
     return; 
 }
 
-// Default printer method
-Scanner.prototype.printer = function(){
-    return; 
-}
 
 // Returns ascii value of character
 Scanner.prototype.toAscii = function(char){
@@ -71,7 +66,6 @@ Scanner.prototype.toLower = function(char){
 Scanner.prototype.toUpper = function(char){
     return char.toUpperCase();
 }
-
 
 // Handles comments 
 Scanner.prototype.setComment = function(char){
@@ -89,9 +83,9 @@ Scanner.prototype.setDigit = function(char){
 Scanner.prototype.setLine = function(ascii_value){
     this.addToken();
     this.reset();
-    if(ascii_value == '10' || ascii_value == '13'){
-        self.curr_row += 1;
-        self.curr_col = 0;
+    if(ascii_value == '10'){
+        this.curr_row += 1;
+        this.curr_col = 0;
     }
     return; 
 }

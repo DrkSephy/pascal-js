@@ -30,13 +30,19 @@ Scanner.prototype.addToken = function(){
             'col'  : this.curr_col
         }
         this.tokens.push(token);
+        var table = document.getElementById('list');
+        var node = document.createElement('tr'); 
+        table.appendChild(node);
+        var entry = node.appendChild(document.createElement('td'));
+        entry.appendChild(document.createTextNode(token['token']));
+        var entry = node.appendChild(document.createElement('td'));
+        entry.appendChild(document.createTextNode(token['value']));
+        var entry = node.appendChild(document.createElement('td'));
+        entry.appendChild(document.createTextNode(token['row']));
+        var entry = node.appendChild(document.createElement('td'));
+        entry.appendChild(document.createTextNode(token['col']));
     }
 
-    var table = document.getElementById('list');
-    var node = document.createElement('tr'); 
-    table.appendChild(node);
-    var entry = node.appendChild(document.createElement('td'));
-    entry.appendChild(document.createTextNode(token['token']));
 
 
     return; 

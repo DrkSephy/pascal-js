@@ -1,0 +1,29 @@
+{
+  "name": "pascal-js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/DrkSephy/pascal-js",
+  "authors": [
+    "David Leonard <DrkSephy1025@gmail.com>"
+  ],
+  "description": "Pascal compiler written in JavaScript",
+  "main": "scanner.js",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "pascal",
+    "javascript",
+    "compiler"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.1"
+  }
+}

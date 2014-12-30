@@ -109,8 +109,18 @@ Scanner.prototype.setLine = function(ascii_value){
 // Handles characters
 Scanner.prototype.setCharacter = function(character){
     if(this.curr_token != 'TK_IDENTIFIER'){
-        Scanner.prototype.setToken('TK_IDENTIFIER')
+        Scanner.prototype.setToken('TK_IDENTIFIER', character);
     }
+    else{
+        this.curr_val += character;
+        if(this.curr_val in keywords){
+            this.curr_token = keywords[this.curr_val];
+        }
+        else if(this.curr_val in operators){
+            this.curr_token = operators[this.curr_val];
+        }
+    }
+
 }
 
 // Main scanner function

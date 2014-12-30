@@ -106,6 +106,14 @@ Scanner.prototype.setLine = function(ascii_value){
     return; 
 }
 
+// Adds the last token into the list, sets new token
+Scanner.prototype.setToken = function(token_type, character){
+    Scanner.prototype.addToken();
+    Scanner.prototype.reset();
+    this.curr_token = token_type;
+    this.curr_val += character; 
+    return; 
+}
 // Handles characters
 Scanner.prototype.setCharacter = function(character){
     if(this.curr_token != 'TK_IDENTIFIER'){

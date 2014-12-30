@@ -144,8 +144,8 @@ function scan(){
 
     // Begin scanning input text
     for(var i = 0; i < program.length; i++){
-        character = scanner.toUpper(program[i]);
-        ascii = scanner.toAscii(program[i]);
+        var character = scanner.toUpper(program[i]);
+        var ascii = scanner.toAscii(program[i]);
         // Handle case for newline character
         if(ascii == '10'){
             Scanner.setLine(ascii);
@@ -158,26 +158,8 @@ function scan(){
         else if(ascii >= 97 && ascii <= 122){
             Scanner.setCharacter(character);
         }
-        /*
-        scanner.curr_col += 1;
-        // Check if character is newline or space
-        if(scanner.toAscii(program[i]) != '32' && scanner.toAscii(program[i]) != '10'){
-            // Build up current token value
-            scanner.curr_val += program[i]
-        }
-        console.log(scanner.curr_val);
-        // Check if current token value is a keyword...
-        if(scanner.toUpper(scanner.curr_val) in keywords){
-            console.log("Hello")
-            scanner.generateToken(scanner.lookup(keywords, scanner.toUpper(scanner.curr_val)));
-            scanner.curr_val = '';
-        }
-        if(scanner.toAscii(program[i]) == '10'){
-            scanner.curr_row += 1; 
-        }
-        console.log(scanner.toAscii(program[i]));
-        // console.log(scanner.curr_val);
-        */
+
+        scanner.curr_col += 1; 
 
     }
     console.log(scanner.tokens);

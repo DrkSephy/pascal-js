@@ -148,15 +148,15 @@ function scan(){
         var ascii = scanner.toAscii(program[i]);
         // Handle case for newline character
         if(ascii == '10'){
-            Scanner.setLine(ascii);
+            scanner.setLine(ascii);
         }
         // Handle case for space
         else if(ascii == '32'){
-            Scanner.setSpace(ascii);
+            scanner.setSpace(ascii);
         }
         // Handle case for valid letters
         else if(ascii >= 97 && ascii <= 122){
-            Scanner.setCharacter(character);
+            scanner.setCharacter(character);
         }
 
         scanner.curr_col += 1; 

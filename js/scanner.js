@@ -55,6 +55,7 @@ Scanner.prototype.reset = function(){
 // Default printer method
 Scanner.prototype.printer = function(){
     console.log("Printer method");
+    return; 
 }
 
 // Retrieves value from table
@@ -79,7 +80,7 @@ Scanner.prototype.toUpper = function(char){
 
 // Handles whitespace character
 Scanner.prototype.setSpace = function(ascii_value){
-    Scanner.prototype.generateToken();
+    Scanner.prototype.addToken();
     Scanner.prototype.reset();
     return; 
 }
@@ -98,7 +99,7 @@ Scanner.prototype.setDigit = function(char){
 
 // Handles newline characters
 Scanner.prototype.setLine = function(ascii_value){
-    Scanner.prototype.generateToken();
+    Scanner.prototype.addToken();
     Scanner.prototype.reset();
     if(ascii_value == '10' || ascii_value == '13'){
         self.curr_row += 1;

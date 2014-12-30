@@ -62,12 +62,6 @@ Scanner.prototype.toUpper = function(char){
     return char.toUpperCase();
 }
 
-// Handles whitespace character
-Scanner.prototype.setSpace = function(ascii_value){
-    this.addToken();
-    this.reset();
-    return; 
-}
 
 // Handles comments 
 Scanner.prototype.setComment = function(char){
@@ -92,9 +86,14 @@ Scanner.prototype.setLine = function(ascii_value){
     return; 
 }
 
-function setToken(token_type, character){
-
+// Handles whitespace character
+Scanner.prototype.setSpace = function(ascii_value){
+    this.addToken();
+    this.reset();
+    return; 
 }
+
+
 // Adds the last token into the list, sets new token
 Scanner.prototype.setToken = function(token_type, character){
     this.addToken();
@@ -121,29 +120,47 @@ Scanner.prototype.setCharacter = function(character){
     return; 
 }
 
+// Handles operators
+Scanner.prototype.setOperator = function(character){
+    // TODO
+    return;
+}
+
 // Main scanner function
 function scan(){
+
     // Get input text from textarea
     var program = document.getElementById("program").value;
     document.getElementById("demo").innerHTML = program; 
+
     // Initalize scanner
     var scanner = new Scanner();
+
     // Begin scanning input text
     for(var i = 0; i < program.length; i++){
         var character = scanner.toUpper(program[i]);
         var ascii = scanner.toAscii(character);
+
         // Handle case for newline character
         if(ascii == '10'){
             scanner.setLine(ascii);
         }
+
         // Handle case for space
         else if(ascii == '32'){
             scanner.setSpace(ascii);
         }
+
         // Handle case for valid letters
         else if( (ascii >= 97 && ascii <= 122) || (ascii >= 65 && ascii <= 90) ){
             scanner.setCharacter(character);
         }
+
+        // Handle case for operators
+        else if(character in operators){
+            scanner.setOperator(character);
+        }
+
         scanner.curr_col += 1;
 
     }

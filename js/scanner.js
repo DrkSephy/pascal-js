@@ -54,30 +54,36 @@ Scanner.prototype.reset = function(){
 
 
 // Returns ascii value of character
-Scanner.prototype.toAscii = function(char){
-    return char.charCodeAt();
+Scanner.prototype.toAscii = function(character){
+    return character.charCodeAt();
 }
 
 // Returns lowercase string
-Scanner.prototype.toLower = function(char){
-    return char.toLowerCase();
+Scanner.prototype.toLower = function(character){
+    return character.toLowerCase();
 }
 
 // Returns uppercase string
-Scanner.prototype.toUpper = function(char){
-    return char.toUpperCase();
+Scanner.prototype.toUpper = function(character){
+    return character.toUpperCase();
 }
 
 // Handles comments 
-Scanner.prototype.setComment = function(char){
+Scanner.prototype.setComment = function(character){
     // TODO
     return;
 }
 
 // Handles numerical characters
-Scanner.prototype.setDigit = function(char){
+Scanner.prototype.setDigit = function(character){
     // TODO
     return;
+}
+
+// Handles strings
+Scanner.prototype.setString = function(character){
+    // TODO
+    return; 
 }
 
 // Handles newline characters

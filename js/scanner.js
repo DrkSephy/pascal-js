@@ -42,6 +42,13 @@ Scanner.prototype.generateToken = function(tokenName){
     return; 
 }
 
+// Resets values of token
+Scanner.prototype.reset = function(){
+    this.curr_val = '';
+    this.curr_token = ''; 
+    return; 
+}
+
 // Default printer method
 Scanner.prototype.printer = function(){
     console.log("Printer method");

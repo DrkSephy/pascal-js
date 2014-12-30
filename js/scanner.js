@@ -97,7 +97,6 @@ Scanner.prototype.setSpace = function(ascii_value){
     return; 
 }
 
-
 // Adds the last token into the list, sets new token
 Scanner.prototype.setToken = function(token_type, character){
     this.addToken();
@@ -138,6 +137,8 @@ Scanner.prototype.setOperator = function(character){
     }
     return;
 }
+
+//
 
 // Main scanner function
 function scan(){

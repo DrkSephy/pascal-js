@@ -24,6 +24,7 @@ Scanner.prototype.addToken = function(){
 
     if(this.curr_token){
         var token = {
+            'token': this.curr_token,
             'value': this.curr_val,
             'row'  : this.curr_row,
             'col'  : this.curr_col

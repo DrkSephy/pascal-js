@@ -207,6 +207,11 @@ function scan(){
             scanner.setToken('TK_SINGLE_QUOTE', character);
         }
 
+        // Handle case for strings composed with double quotes
+        else if(ascii == 34){
+            scanner.setToken('TK_DOUBLE_QUOTE', character);
+        }
+
         scanner.curr_col += 1;
 
     }
@@ -269,6 +274,7 @@ var operators = {
     '('         : 'TK_OPEN_PARENTHESIS',
     ')'         : 'TK_CLOSE_PARENTHESIS',
     '\''        : 'TK_SINGLE_QUOTE',
+    '"'         : 'TK_DOUBLE_QUOTE',
     '(*'        : 'TK_BEGIN_COMMENT',
     '*)'        : 'TK_END_COMMENT',
     ','         : 'TK_COMMA',

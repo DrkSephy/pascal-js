@@ -84,7 +84,7 @@ Scanner.prototype.setEOF = function(character){
 
 // Handles numerical characters
 Scanner.prototype.setDigit = function(character){
-    if(this.curr_token == 'TK_REAL' || this.curr_token == 'TK_INT'){
+    if(this.curr_token === 'TK_REAL' || this.curr_token === 'TK_INT'){
         this.curr_val += character;
     }
     else{
@@ -96,8 +96,8 @@ Scanner.prototype.setDigit = function(character){
 // Handles strings, builds string up
 Scanner.prototype.setString = function(character){
     this.curr_val += character;
-    if((this.curr_token == 'TK_SINGLE_QUOTE' && character == "'") ||
-       (this.curr_token == 'TK_DOUBLE_QUOTE' && character == '"')){
+    if((this.curr_token === 'TK_SINGLE_QUOTE' && character === "'") ||
+       (this.curr_token === 'TK_DOUBLE_QUOTE' && character === '"')){
         this.buildString();
     }
     return; 
@@ -114,7 +114,7 @@ Scanner.prototype.buildString = function(){
 Scanner.prototype.setLine = function(ascii_value){
     this.addToken();
     this.reset();
-    if(ascii_value == '10'){
+    if(ascii_value === '10'){
         this.curr_row += 1;
         this.curr_col = 0;
     }
@@ -156,7 +156,7 @@ Scanner.prototype.setCharacter = function(character){
 
 // Handles operators
 Scanner.prototype.setOperator = function(character){
-    if(character == '.' && this.curr_token == 'TK_INT'){
+    if(character === '.' && this.curr_token === 'TK_INT'){
         console.log("Hello");
         this.curr_token = 'TK_REAL';
         this.curr_val += character;
@@ -189,7 +189,7 @@ function scan(){
     for(var i = 0; i < program.length; i++){
 
         // Handle case when we close the string
-        if(scanner.curr_token == 'TK_SINGLE_QUOTE' || scanner.curr_token == 'TK_DOUBLE_QUOTE'){
+        if(scanner.curr_token === 'TK_SINGLE_QUOTE' || scanner.curr_token === 'TK_DOUBLE_QUOTE'){
             scanner.setString(character);
         }
 
@@ -222,12 +222,12 @@ function scan(){
         }
 
         // Handle case for strings composed with single quote
-        else if(ascii == 39){
+        else if(ascii === 39){
             scanner.setToken('TK_SINGLE_QUOTE', character);
         }
 
         // Handle case for strings composed with double quotes
-        else if(ascii == 34){
+        else if(ascii === 34){
             scanner.setToken('TK_DOUBLE_QUOTE', character);
         }
 

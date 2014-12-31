@@ -82,7 +82,12 @@ Scanner.prototype.setEOF = function(character){
 
 // Handles numerical characters
 Scanner.prototype.setDigit = function(character){
-    // TODO
+    if(this.curr_token == 'TK_REAL' || this.curr_token == 'TK_INT'){
+        this.curr_val += character;
+    }
+    else{
+        this.setToken('TK_INT', character);
+    }
     return;
 }
 
@@ -186,6 +191,11 @@ function scan(){
         // Handle case for operators
         else if(character in operators){
             scanner.setOperator(character);
+        }
+
+        // Handle case for numbers
+        else if(ascii >= 48 && ascii <= 57){
+            scanner.setDigit(character);
         }
 
         scanner.curr_col += 1;

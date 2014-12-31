@@ -144,6 +144,7 @@ Scanner.prototype.setCharacter = function(character){
 // Handles operators
 Scanner.prototype.setOperator = function(character){
     if(character == '.' && this.curr_token == 'TK_INT'){
+        console.log("Hello");
         this.curr_token = 'TK_REAL';
         this.curr_val += character;
     }
@@ -250,6 +251,7 @@ var operators = {
     ':='        : 'TK_ASSIGNMENT',
     '>'         : 'TK_GREATER',
     '<'         : 'TK_LESS',
+    '.'         : 'TK_DOT',
     '>='        : 'TK_GREATER_EQUALS',
     '<='        : 'TK_LESS_EQUALS',
     '!'         : 'TK_EXCLAMATION',

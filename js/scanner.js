@@ -174,6 +174,12 @@ function scan(){
 
     // Begin scanning input text
     for(var i = 0; i < program.length; i++){
+
+        // Handle case when we close the string
+        if(this.curr_token == 'TK_SINGLE_QUOTE' || this.curr_token == 'TK_DOUBLE_QUOTE'){
+            scanner.setString(character);
+        }
+
         var character = scanner.toUpper(program[i]);
         var ascii = scanner.toAscii(character);
 

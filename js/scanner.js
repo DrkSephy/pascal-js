@@ -76,7 +76,9 @@ Scanner.prototype.setComment = function(character){
 
 // Handles EOF
 Scanner.prototype.setEOF = function(character){
-    // TODO
+    this.curr_val = 'TK_EOF';
+    this.curr_val = 'EOF';
+    this.addToken();
     return;
 }
 
@@ -232,6 +234,7 @@ function scan(){
         scanner.curr_col += 1;
 
     }
+    scanner.setEOF();
     console.log(scanner.tokens);
 
 }

@@ -202,6 +202,11 @@ function scan(){
             scanner.setDigit(character);
         }
 
+        // Handle case for strings composed with single quote
+        else if(ascii == 39){
+            scanner.setToken('TK_SINGLE_QUOTE', character);
+        }
+
         scanner.curr_col += 1;
 
     }
@@ -263,7 +268,7 @@ var operators = {
     ';'         : 'TK_SEMICOLON',
     '('         : 'TK_OPEN_PARENTHESIS',
     ')'         : 'TK_CLOSE_PARENTHESIS',
-    '\''        : 'TK_QUOTE',
+    '\''        : 'TK_SINGLE_QUOTE',
     '(*'        : 'TK_BEGIN_COMMENT',
     '*)'        : 'TK_END_COMMENT',
     ','         : 'TK_COMMA',

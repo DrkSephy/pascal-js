@@ -143,7 +143,12 @@ Scanner.prototype.setCharacter = function(character){
 
 // Handles operators
 Scanner.prototype.setOperator = function(character){
-    if(this.curr_val + character in operators){
+    if(character == '.' && this.curr_token == 'TK_INT'){
+        this.curr_token = 'TK_REAL';
+        this.curr_val += character;
+    }
+
+    else if(this.curr_val + character in operators){
         this.curr_val += character;
         // Handle all two-symbol operators
         if(this.curr_val in operators){
@@ -155,8 +160,6 @@ Scanner.prototype.setOperator = function(character){
     }
     return;
 }
-
-//
 
 // Main scanner function
 function scan(){

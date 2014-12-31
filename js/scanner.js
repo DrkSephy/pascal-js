@@ -91,7 +91,7 @@ Scanner.prototype.setDigit = function(character){
     return;
 }
 
-// Handles strings
+// Handles strings, builds string up
 Scanner.prototype.setString = function(character){
     this.curr_val += character;
     if((this.curr_token == 'TK_SINGLE_QUOTE' && character == "'") ||
@@ -99,6 +99,13 @@ Scanner.prototype.setString = function(character){
         this.buildString();
     }
     return; 
+}
+
+// Builds final string token
+Scanner.prototype.buildString = function(){
+    this.curr_token = 'TK_STRING';
+    this.addToken();
+    this.reset();
 }
 
 // Handles newline characters

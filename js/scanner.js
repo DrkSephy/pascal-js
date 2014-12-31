@@ -93,7 +93,11 @@ Scanner.prototype.setDigit = function(character){
 
 // Handles strings
 Scanner.prototype.setString = function(character){
-    // TODO
+    this.curr_val += character;
+    if((this.curr_token == 'TK_SINGLE_QUOTE' && character == "'") ||
+       (this.curr_token == 'TK_DOUBLE_QUOTE' && character == '"')){
+        this.buildString();
+    }
     return; 
 }
 

@@ -187,7 +187,7 @@ function scan(){
     for(var i = 0; i < program.length; i++){
 
         // Handle case when we close the string
-        if(this.curr_token == 'TK_SINGLE_QUOTE' || this.curr_token == 'TK_DOUBLE_QUOTE'){
+        if(scanner.curr_token == 'TK_SINGLE_QUOTE' || scanner.curr_token == 'TK_DOUBLE_QUOTE'){
             scanner.setString(character);
         }
 

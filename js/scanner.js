@@ -16,7 +16,6 @@ function Scanner(){
     this.curr_col   = 1 ;
     this.curr_token = '';
     this.curr_val   = ''; 
-    this.comments   = false; 
     this.strings    = false; 
 
 }
@@ -97,10 +96,8 @@ Scanner.prototype.setDigit = function(character){
 // Handles strings, builds string up
 Scanner.prototype.setString = function(character){
     this.curr_val += character;
-    console.log(character);
     if((this.curr_token === 'TK_SINGLE_QUOTE' && character === "'") ||
        (this.curr_token === 'TK_DOUBLE_QUOTE' && character === '"')){
-        console.log("Going to build the string");
         this.buildString();
     }
     return; 
@@ -111,13 +108,14 @@ Scanner.prototype.buildString = function(){
     this.curr_token = 'TK_STRING';
     this.addToken();
     this.reset();
+    this.strings = false; 
 }
 
 // Handles newline characters
 Scanner.prototype.setLine = function(ascii_value){
     this.addToken();
     this.reset();
-    if(ascii_value === '10'){
+    if(ascii_value === 10){
         this.curr_row += 1;
         this.curr_col = 0;
     }
@@ -137,7 +135,6 @@ Scanner.prototype.setToken = function(token_type, character){
     this.reset();
     this.curr_token = token_type;
     this.curr_val += character; 
-    console.log(this.curr_val);
     return; 
 }
 
@@ -193,7 +190,6 @@ function scan(){
 
         // Handle case when we close the string
         if(scanner.curr_token === 'TK_SINGLE_QUOTE' || scanner.curr_token === 'TK_DOUBLE_QUOTE'){
-            console.log(scanner.curr_token);
             scanner.setString(program[i]);
         }
 
@@ -201,7 +197,6 @@ function scan(){
             // If we are not generating a string, do this
             var character = scanner.toUpper(program[i]);
             var ascii = scanner.toAscii(character);
-            console.log(ascii);
             // Handle case for newline character
             if(ascii == '10'){
                 scanner.setLine(ascii);
@@ -214,22 +209,18 @@ function scan(){
 
             // Handle case for valid letters
             else if( (ascii >= 97 && ascii <= 122) || (ascii >= 65 && ascii <= 90) ){
-                console.log("HELLO AGAIN");
                 scanner.setCharacter(character);
             }
 
             // Handle case for numbers
             else if(ascii >= 48 && ascii <= 57){
-                console.log("number");
                 scanner.setDigit(character);
             }
 
             // Handle case for strings composed with single quote
             else if(ascii === 39){
-                console.log("IN HERE");
                 scanner.setToken('TK_SINGLE_QUOTE', character);
                 scanner.strings = true;
-                console.log(scanner.strings);
             }
 
             // Handle case for strings composed with double quotes
@@ -240,12 +231,11 @@ function scan(){
 
             // Handle case for operators
             else if(character in operators){
-                console.log("operator");
                 scanner.setOperator(character);
             }
         }
+        scanner.curr_col += 1;
     }
-    scanner.curr_col += 1;
 
         
     //scanner.setEOF();

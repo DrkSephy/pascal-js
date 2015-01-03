@@ -4,14 +4,6 @@
         <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
     </head>
     <body>
-        <div id="mocha"></div>
-        <script src="node_modules/mocha/mocha.js"></script>
-        <script src="node_modules/chai/chai.js"></script>
-
-        <script>
-        mocha.setup('bdd')
-        mocha.reporter('html');
-        </script>
         <textarea id="program" rows="20" cols="60"></textarea>
         <script src="js/scanner.js"></script>
         <br>
@@ -28,14 +20,5 @@
 
         </table>
 
-        <!-- Tests -->
-        <script src="tests.js"></script>
-
-        <script>
-            // Only tests run in real browser, injected script run if options.run == true
-            if (navigator.userAgent.indexOf('PhantomJS') < 0) {
-              mocha.run();
-            }
-        </script>
     </body>
 </html>

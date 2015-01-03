@@ -207,7 +207,7 @@ function scan(){
         }
 
         // Handle case for valid letters
-        else if( scanner.curr_token != 'TK_SINGLE_QUOTE' && 
+        else if( (scanner.curr_token != 'TK_SINGLE_QUOTE')  && (scanner.curr_token != 'TK_DOUBLE_QUOTE') &&
                 ((ascii >= 97 && ascii <= 122) || (ascii >= 65 && ascii <= 90))) {
             console.log("HELLO");
             scanner.setCharacter(character);

@@ -96,8 +96,11 @@ Scanner.prototype.setDigit = function(character){
 // Handles strings, builds string up
 Scanner.prototype.setString = function(character){
     this.curr_val += character;
+    console.log(character);
     if((this.curr_token === 'TK_SINGLE_QUOTE' && character === "'") ||
        (this.curr_token === 'TK_DOUBLE_QUOTE' && character === '"')){
+        console.log(this.strings);
+        this.strings = false; 
         this.buildString();
     }
     return; 
@@ -105,10 +108,11 @@ Scanner.prototype.setString = function(character){
 
 // Builds final string token
 Scanner.prototype.buildString = function(){
+    console.log("BUILDING STRING" + this.curr_val);
     this.curr_token = 'TK_STRING';
     this.addToken();
     this.reset();
-    this.strings = false; 
+    return; 
 }
 
 // Handles newline characters
@@ -187,13 +191,14 @@ function scan(){
 
     // Begin scanning input text
     for(var i = 0; i < program.length; i++){
-
+        //console.log(scanner.curr_token);
         // Handle case when we close the string
         if(scanner.curr_token === 'TK_SINGLE_QUOTE' || scanner.curr_token === 'TK_DOUBLE_QUOTE'){
             scanner.setString(program[i]);
         }
 
         if(!scanner.strings){
+            console.log("doing stuff " + ": " + program[i] )
             // If we are not generating a string, do this
             var character = scanner.toUpper(program[i]);
             var ascii = scanner.toAscii(character);

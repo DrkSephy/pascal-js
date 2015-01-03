@@ -76,7 +76,7 @@ Scanner.prototype.setComment = function(character){
 
 // Handles EOF
 Scanner.prototype.setEOF = function(character){
-    this.curr_val = 'TK_EOF';
+    this.curr_token = 'TK_EOF';
     this.curr_val = 'EOF';
     this.addToken();
     return;
@@ -162,6 +162,11 @@ Scanner.prototype.setOperator = function(character){
         this.curr_token = 'TK_REAL';
         this.curr_val += character;
     }
+    else if(character === '.' && this.curr_token === 'TK_END'){
+        this.curr_token = 'TK_END_CODE';
+        this.curr_val += character;
+        this.addToken();
+    }
 
     else if(this.curr_val + character in operators){
         this.curr_val += character;
@@ -180,8 +185,7 @@ Scanner.prototype.setOperator = function(character){
 function scan(){
 
     // Get input text from textarea
-    var program = document.getElementById("program").value;
-    document.getElementById("demo").innerHTML = program; 
+    var program = document.getElementById("program").value; 
 
     // Initalize scanner
     var scanner = new Scanner();
@@ -240,8 +244,7 @@ function scan(){
         scanner.curr_col += 1;
     }
 
-        
-    //scanner.setEOF();
+    scanner.setEOF();
     console.log(scanner.tokens);
 
 }

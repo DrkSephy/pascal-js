@@ -96,10 +96,8 @@ Scanner.prototype.setDigit = function(character){
 // Handles strings, builds string up
 Scanner.prototype.setString = function(character){
     this.curr_val += character;
-    console.log(character);
     if((this.curr_token === 'TK_SINGLE_QUOTE' && character === "'") ||
        (this.curr_token === 'TK_DOUBLE_QUOTE' && character === '"')){
-        console.log(this.strings);
         this.strings = false; 
         this.buildString();
     }
@@ -108,7 +106,6 @@ Scanner.prototype.setString = function(character){
 
 // Builds final string token
 Scanner.prototype.buildString = function(){
-    console.log("BUILDING STRING" + this.curr_val);
     this.curr_token = 'TK_STRING';
     this.addToken();
     this.reset();
@@ -149,8 +146,8 @@ Scanner.prototype.setCharacter = function(character){
     }
     else{
         this.curr_val += character;
-        if(this.curr_val in keywords){
-            this.curr_token = keywords[this.curr_val];
+        if(this.toLower(this.curr_val) in keywords){
+            this.curr_token = keywords[this.toLower(this.curr_val)];
         }
         else if(this.curr_val in operators){
             this.curr_token = operators[this.curr_val];
@@ -209,7 +206,6 @@ function scan(){
         // Handle case for valid letters
         else if( (scanner.curr_token != 'TK_SINGLE_QUOTE')  && (scanner.curr_token != 'TK_DOUBLE_QUOTE') &&
                 ((ascii >= 97 && ascii <= 122) || (ascii >= 65 && ascii <= 90))) {
-            console.log("HELLO");
             scanner.setCharacter(character);
         }
 

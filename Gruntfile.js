@@ -6,7 +6,7 @@ module.exports = function(grunt){
     // Mocha
     mocha: {
       all: {
-        src: ['testrunner.html'],
+        src: ['tests/testrunner.html'],
         
       },
       options: {

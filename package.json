@@ -1,0 +1,28 @@
+{
+  "name": "pascal-js",
+  "version": "0.0.0",
+  "description": "Pascal Compiler written in JavaScript",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^2.1.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DrkSephy/pascal-js.git"
+  },
+  "keywords": [
+    "Pascal",
+    "JavaScript",
+    "Compiler"
+  ],
+  "author": "David Leonard <DrkSephy1025@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DrkSephy/pascal-js/issues"
+  },
+  "homepage": "https://github.com/DrkSephy/pascal-js"
+}

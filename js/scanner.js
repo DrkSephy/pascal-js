@@ -207,7 +207,9 @@ function scan(){
         }
 
         // Handle case for valid letters
-        else if( (ascii >= 97 && ascii <= 122) || (ascii >= 65 && ascii <= 90) ){
+        else if( scanner.curr_token != 'TK_SINGLE_QUOTE' && 
+                ((ascii >= 97 && ascii <= 122) || (ascii >= 65 && ascii <= 90))) {
+            console.log("HELLO");
             scanner.setCharacter(character);
         }
 
@@ -224,13 +226,13 @@ function scan(){
         // Handle case for strings composed with single quote
         else if(ascii === 39){
             scanner.setToken('TK_SINGLE_QUOTE', character);
-            scanner.strings = true;
+            // scanner.strings = true;
         }
 
         // Handle case for strings composed with double quotes
         else if(ascii === 34){
             scanner.setToken('TK_DOUBLE_QUOTE', character);
-            scanner.strings = true; 
+            // scanner.strings = true; 
         }
 
         // Handle case for operators

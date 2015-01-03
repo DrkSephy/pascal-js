@@ -192,53 +192,52 @@ function scan(){
     // Begin scanning input text
     for(var i = 0; i < program.length; i++){
         //console.log(scanner.curr_token);
+
+        // If we are not generating a string, do this
+        var character = scanner.toUpper(program[i]);
+        var ascii = scanner.toAscii(character);
+        // Handle case for newline character
+        if(ascii == '10'){
+            scanner.setLine(ascii);
+        }
+
+        // Handle case for space
+        else if(ascii == '32'){
+            scanner.setSpace(ascii);
+        }
+
+        // Handle case for valid letters
+        else if( (ascii >= 97 && ascii <= 122) || (ascii >= 65 && ascii <= 90) ){
+            scanner.setCharacter(character);
+        }
+
+        // Handle case for numbers
+        else if(ascii >= 48 && ascii <= 57){
+            scanner.setDigit(character);
+        }
+
         // Handle case when we close the string
-        if(scanner.curr_token === 'TK_SINGLE_QUOTE' || scanner.curr_token === 'TK_DOUBLE_QUOTE'){
+        else if(scanner.curr_token === 'TK_SINGLE_QUOTE' || scanner.curr_token === 'TK_DOUBLE_QUOTE'){
             scanner.setString(program[i]);
         }
 
-        if(!scanner.strings){
-            console.log("doing stuff " + ": " + program[i] )
-            // If we are not generating a string, do this
-            var character = scanner.toUpper(program[i]);
-            var ascii = scanner.toAscii(character);
-            // Handle case for newline character
-            if(ascii == '10'){
-                scanner.setLine(ascii);
-            }
-
-            // Handle case for space
-            else if(ascii == '32'){
-                scanner.setSpace(ascii);
-            }
-
-            // Handle case for valid letters
-            else if( (ascii >= 97 && ascii <= 122) || (ascii >= 65 && ascii <= 90) ){
-                scanner.setCharacter(character);
-            }
-
-            // Handle case for numbers
-            else if(ascii >= 48 && ascii <= 57){
-                scanner.setDigit(character);
-            }
-
-            // Handle case for strings composed with single quote
-            else if(ascii === 39){
-                scanner.setToken('TK_SINGLE_QUOTE', character);
-                scanner.strings = true;
-            }
-
-            // Handle case for strings composed with double quotes
-            else if(ascii === 34){
-                scanner.setToken('TK_DOUBLE_QUOTE', character);
-                scanner.strings = true; 
-            }
-
-            // Handle case for operators
-            else if(character in operators){
-                scanner.setOperator(character);
-            }
+        // Handle case for strings composed with single quote
+        else if(ascii === 39){
+            scanner.setToken('TK_SINGLE_QUOTE', character);
+            scanner.strings = true;
         }
+
+        // Handle case for strings composed with double quotes
+        else if(ascii === 34){
+            scanner.setToken('TK_DOUBLE_QUOTE', character);
+            scanner.strings = true; 
+        }
+
+        // Handle case for operators
+        else if(character in operators){
+            scanner.setOperator(character);
+        }
+        
         scanner.curr_col += 1;
     }
 

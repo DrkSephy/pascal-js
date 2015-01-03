@@ -214,7 +214,8 @@ function scan(){
         }
 
         // Handle case for numbers
-        else if(ascii >= 48 && ascii <= 57){
+        else if( (ascii >= 48 && ascii <= 57) && (scanner.curr_token != 'TK_SINGLE_QUOTE')  
+                    && (scanner.curr_token != 'TK_DOUBLE_QUOTE') ){
             scanner.setDigit(character);
         }
 

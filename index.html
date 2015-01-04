@@ -1,10 +1,11 @@
 <!doctype tml>
 <html>
     <head>
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
-        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     </head>
     <body>
         <textarea id="program" rows="20" cols="60"></textarea>
@@ -14,7 +15,7 @@
         <button type="button" onClick="scan()"> Scan </button>
         <p id="demo" </p>
         <h2> Tokens </h2>
-        <table id="list" style="width:50%">
+        <table class="table">
             <tr>
                 <th id="token"> TOKEN </th>
                 <th id="value"> VALUE </th>

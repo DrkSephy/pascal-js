@@ -33,7 +33,7 @@ Scanner.prototype.addToken = function(){
         this.tokens.push(token);
 
         // TODO: Use bootstrap to render these tables
-        var table = document.getElementsByClassName('table')[0];
+        var table = document.getElementById('output');
         var node = document.createElement('tr');
         for(var prop in token){
             table.appendChild(node);

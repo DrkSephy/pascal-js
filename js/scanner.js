@@ -166,6 +166,7 @@ Scanner.prototype.setOperator = function(character){
         this.curr_token = 'TK_END_CODE';
         this.curr_val += character;
         this.addToken();
+        this.reset();
     }
 
     else if(this.curr_val + character in operators){
